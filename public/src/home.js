@@ -21,7 +21,7 @@ function getBooksBorrowedCount(books) {
   return borrowedBooks;
 }
 
-//sorts using sortByCount helper function
+//sort helper function
 function _sortByCount(array){
   return array.sort((a,b) => a.count > b.count ? -1 : 1)
 }

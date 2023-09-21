@@ -9,23 +9,16 @@ function findBookById(books, id) {
 }
 
 function partitionBooksByBorrowedStatus(books) {
+  // creates an array with 2 arrays inside of it
+  // one array for checked out and one for not checked out
+  let checkedOut = [];
+  let notCheckedOut = [];
 
-// creates an array with 2 arrays inside of it
-// one array for borrowed and one for returned
-  const checkedOut = [];
-  const notCheckedOut = [];
+  // filter the books based on their borrowed status
+  checkedOut = books.filter(book => book.borrows[0].returned === false);
+  notCheckedOut = books.filter(book => book.borrows[0].returned === true);
 
-  for (const book of books) {
-    const borrowed = book.borrows[0];
-//if book is returned push to array [notCheckedOut]
-    if (borrowed.returned) {
-      notCheckedOut.push(book);
-//else- book not returned - push to array [checkedOut]
-    } else {
-      checkedOut.push(book);
-    }
-  }
-// return partitionedBooks array
+  // return partitionedBooks array
   return [checkedOut, notCheckedOut];
 }
 
